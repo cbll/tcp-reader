@@ -21,26 +21,22 @@ public class tcpReader {
                 if(inputStr == null) {
                     break;
                 }
-                if (inputStr.matches(".*192\\.168\\.0\\..*>.*"))
+                if (inputStr.matches(".*192\\.168\\.0\\..*>.*")) {
                 /* Regex to determine if localhost is sending */
-                {
+                
                     String[]inputStrArr = inputStr.split("length");
-                    if (inputStrArr.length>=2)
-                    {
+                    if (inputStrArr.length>=2){
                         inputStr = inputStrArr[1];
                         inputStr = inputStr.replaceAll("\\D+", "");
                         /* Regex to confine byte value after length*/
                         /* System.out.println(inputStr + " Bytes sent")*/
                         sumSent+=Long.valueOf(inputStr);
                     }
-
                 }
-                else if (inputStr.matches(".*>.*192\\.168\\.0\\..*"))
+                else if (inputStr.matches(".*>.*192\\.168\\.0\\..*")) {
                 /* Regex to determine if localhost is receiving */
-                {
                     String[]inputStrArr = inputStr.split("length");
-                    if (inputStrArr.length>=2)
-                    {
+                    if (inputStrArr.length>=2) {
                         inputStr = inputStrArr[1];
                         inputStr = inputStr.replaceAll("\\D+", "");
                         /* Regex to confine byte value after length*/
